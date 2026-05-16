@@ -8,15 +8,17 @@ SRC =		test_get_next_line.c \
 
 OBJ = $(SRC:.c=.o)
 
+HEADERS =	get_next_line/get_next_line.h
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
-define: CFLAGS += "-DBUFFER_SIZE=$(BUFFER_SIZE)"
+define: CFLAGS += -DBUFFER_SIZE=$(BUFFER_SIZE)
 define: re
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
