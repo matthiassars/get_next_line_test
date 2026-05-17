@@ -8,16 +8,17 @@ void	test_file(char *filename)
 	char	*line;
 
 	fd = open(filename, O_RDONLY);
+	//get_next_line(fd);
 	while ((line = get_next_line(fd)))
 	{
-		write(1, "{ ", 2);
+		write(1, "> ", 2);
 		write(1, line, BUFFER_SIZE);
-		write(1, " }\n", 3);
 	}
 	close(fd);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	test_file("robots.txt");
+	(void)argc;
+	test_file(argv[1]);
 }
