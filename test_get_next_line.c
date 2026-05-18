@@ -8,17 +8,19 @@ void	test_file(char *filename)
 	char	*line;
 
 	fd = open(filename, O_RDONLY);
-	//get_next_line(fd);
+	//line = get_next_line(fd);
+	//printf("%s\n", line);
 	while ((line = get_next_line(fd)))
 	{
-		write(1, "> ", 2);
-		write(1, line, BUFFER_SIZE);
+		printf("> %s", line);
 	}
 	close(fd);
 }
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	test_file(argv[1]);
+	if (argc > 1)
+	{
+		test_file(argv[1]);
+	}
 }

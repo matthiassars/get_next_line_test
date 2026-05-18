@@ -1,5 +1,5 @@
 CC =		cc
-CFLAGS =	-Wall -Wextra -I./get_next_line
+CFLAGS =	-Wall -Wextra -I./get_next_line -g
 NAME = 		test_get_next_line
 
 SRC =		test_get_next_line.c \
