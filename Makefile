@@ -15,7 +15,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
-define: CFLAGS += -DBUFFER_SIZE=$(BUFFER_SIZE)
+define: CFLAGS += -D BUFFER_SIZE=$(BUFFER_SIZE)
 define: re
 
 %.o: %.c $(HEADERS)
