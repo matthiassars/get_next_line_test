@@ -24,9 +24,10 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		test_get_next_line(0);
-	if (argc > 1)
+	else if (argc > 1)
 	{
 		fd = open(argv[1], O_RDONLY);
+		test_get_next_line(fd);
 		test_get_next_line(fd);
 		close(fd);
 	}

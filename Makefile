@@ -1,5 +1,5 @@
 CC =		cc
-CFLAGS =	-Wall -Wextra -I./get_next_line -g
+CFLAGS =	-Wall -Wextra -I./get_next_line
 NAME = 		test_get_next_line
 
 SRC =		test_get_next_line.c \
@@ -15,8 +15,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
-define: CFLAGS += -D BUFFER_SIZE=$(BUFFER_SIZE)
-define: re
+set-buffer-size: CFLAGS += -D BUFFER_SIZE=$(BUFFER_SIZE)
+set-buffer-size: re
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
