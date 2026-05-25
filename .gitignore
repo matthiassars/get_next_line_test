@@ -57,3 +57,4 @@ dkms.conf
 *.vscode/
 
 test_get_next_line
+test_get_next_line_bonus
