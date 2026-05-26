@@ -1,44 +1,51 @@
-CC =		cc
-CFLAGS =	-Wall -Wextra -I./get_next_line
+# --- Compiler and Flags ---
+CC        = cc
+CFLAGS    = -Wall -Wextra
+INCLUDES  = -I ./get_next_line
 
-TARGETS =	test_get_next_line \
-			test_get_next_line_bonus
+# --- Optional Buffer Size ---
+# If BUFFER_SIZE is provided via command line (e.g., make BUFFER_SIZE=42),
+# it appends the -D flag to CFLAGS.
+ifdef BUFFER_SIZE
+    CFLAGS += -D BUFFER_SIZE=$(BUFFER_SIZE)
+endif
 
-# Explicitly list the GNL sources and convert them to .o targets
-GNL_SRC =	get_next_line/get_next_line.c \
-			get_next_line/get_next_line_utils.c
-GNL_OBJ =	$(GNL_SRC:.c=.o)
+# --- Source Files and Outputs ---
+# Mandatory
+NAME      = test_get_next_line
+SRCS      = test_get_next_line.c \
+            get_next_line/get_next_line.c \
+            get_next_line/get_next_line_utils.c
 
-# Test source files
-SRC =		test_get_next_line.c \
-			test_get_next_line_bonus.c
+# Bonus
+NAME_B    = test_get_next_line_bonus
+SRCS_B    = test_get_next_line_bonus.c \
+            get_next_line/get_next_line_bonus.c \
+            get_next_line/get_next_line_utils_bonus.c
 
-# Combine all object files for the clean rule
-OBJ =		$(SRC:.c=.o) $(GNL_OBJ)
+# --- Rules ---
 
-HEADERS =	get_next_line/get_next_line.h
+# Default target compiles both the mandatory and the bonus part
+all: mandatory bonus
 
-all: $(TARGETS)
+mandatory: $(NAME)
 
-# Individual rules for the targets ensuring they link the GNL objects explicitly
-test_get_next_line: test_get_next_line.o $(GNL_OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+# Compiles mandatory binary
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) -o $(NAME)
 
-test_get_next_line_bonus: test_get_next_line_bonus.o $(GNL_OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+# Compiles bonus binary
+bonus: $(NAME_B)
 
-set-buffer-size: CFLAGS += -D BUFFER_SIZE=$(BUFFER_SIZE)
-set-buffer-size: re
+$(NAME_B): $(SRCS_B)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS_B) -o $(NAME_B)
 
-%.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
-
+# Clean up binaries
 clean:
-	rm -f $(OBJ)
+	rm -f $(NAME) $(NAME_B)
 
 fclean: clean
-	rm -f $(TARGETS)
 
 re: fclean all
 
-.PHONY: all clean fclean re set-buffer-size
+.PHONY: all bonus clean fclean re
