@@ -2,7 +2,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 
-void print_rep(char c, int n)
+void	print_rep(char c, int n)
 {
 	while (n > 0)
 	{
@@ -11,7 +11,7 @@ void print_rep(char c, int n)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		fd[1024];
 	char	*line;
@@ -33,9 +33,6 @@ int main(int argc, char **argv)
 			{
 				not_done_yet = 1;
 				print_rep(' ', (i - 1) * 4);
-				//printf("\33[1;3%dm%d>\33[0m", (fd[i] - 2) % 8, fd[i]);
-				//printf("%s", line);
-				//printf("\33[1;3%dm>\33[0m", (fd[i] - 2) % 8);
 				printf("\33[0m%d>\33[1;3%dm", fd[i], (fd[i] - 2) % 8);
 				printf("%s", line);
 				printf("\33[0m>");
