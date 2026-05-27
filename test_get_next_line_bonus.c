@@ -17,10 +17,10 @@ int	main(int argc, char **argv)
 	char	*line;
 	int		not_done_yet;
 
-	not_done_yet = 1;
 	for (int i = 1; i < argc; i++)
 		fd[i] = open(argv[i], O_RDONLY);
 	putchar(' ');
+	not_done_yet = 1;
 	while (not_done_yet)
 	{
 		not_done_yet = 0;
