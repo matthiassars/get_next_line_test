@@ -13,6 +13,7 @@ void	test_get_next_line(int fd)
 		printf("\33[1;32m>\33[0m");
 		printf("%s", line);
 		printf("\33[1;31m>\33[0m");
+		free(line);
 		line = get_next_line(fd);
 	}
 	printf("\n");
@@ -27,7 +28,6 @@ int	main(int argc, char **argv)
 	else if (argc > 1)
 	{
 		fd = open(argv[1], O_RDONLY);
-		test_get_next_line(fd);
 		test_get_next_line(fd);
 		close(fd);
 	}

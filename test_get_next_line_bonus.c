@@ -19,9 +19,7 @@ int	main(int argc, char **argv)
 
 	not_done_yet = 1;
 	for (int i = 1; i < argc; i++)
-	{
 		fd[i] = open(argv[i], O_RDONLY);
-	}
 	putchar(' ');
 	while (not_done_yet)
 	{
@@ -36,6 +34,7 @@ int	main(int argc, char **argv)
 				printf("\33[0m%d>\33[1;3%dm", fd[i], (fd[i] - 2) % 8);
 				printf("%s", line);
 				printf("\33[0m>");
+				free(line);
 			}
 		}
 	}

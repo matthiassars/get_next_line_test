@@ -58,3 +58,4 @@ dkms.conf
 
 test_get_next_line
 test_get_next_line_bonus
+.buffer_size
