@@ -31,9 +31,10 @@ int	main(int argc, char **argv)
 			{
 				not_done_yet = 1;
 				print_rep(' ', (i - 1) * 4);
-				printf("\33[0m%d>\33[1;3%dm", fd[i], (fd[i] - 2) % 8);
+				printf("\33[0;1m%d>\33[0;3%dm",
+					fd[i], (fd[i] - 3) % 6 + 1);
 				printf("%s", line);
-				printf("\33[0m>");
+				printf("\33[0;1m>\33[0m");
 				free(line);
 			}
 		}
