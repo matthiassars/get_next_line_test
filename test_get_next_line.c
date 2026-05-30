@@ -7,7 +7,7 @@ void	test_get_next_line(int fd)
 	char	*line;
 
 	line = get_next_line(fd);
-	printf(" ");
+	printf("\33[1m%d", fd);
 	while (line)
 	{
 		printf("\33[1;32m>\33[0m");
