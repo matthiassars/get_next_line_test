@@ -23,9 +23,9 @@ int	main(int argc, char **argv)
 {
 	int	fd;
 
-	if (argc == 1)
+	if (argc <= 1)
 		test_get_next_line(0);
-	else if (argc > 1)
+	else
 	{
 		fd = open(argv[1], O_RDONLY);
 		test_get_next_line(fd);
