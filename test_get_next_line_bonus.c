@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 			if (line)
 			{
 				not_done_yet = 1;
-				print_rep(' ', (i - 1) * 4);
+				print_rep('\t', i - 1);
 				printf("\33[0;1m%d>\33[0;3%dm",
 					fd[i], (fd[i] - 3) % 6 + 1);
 				printf("%s", line);
