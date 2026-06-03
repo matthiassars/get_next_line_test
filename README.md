@@ -18,3 +18,7 @@ Run `test_get_next_line_bonus` to test the bonus part. Every argument is taken a
 * `./test_get_next_line_bonus <filename 1> <filename 2> ...`
 
 No guarantees; also perform your own tests!
+
+## Resources
+
+The text in `circles.txt` is written by Oscar Matallana, <https://github.com/oscarmatallana>.
