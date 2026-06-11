@@ -1,4 +1,4 @@
-# 📜 `get_next_line_test`
+# 📜 get_next_line_test
 
 *by Matthias Sars, <msars@student.42berlin.de>*
 
